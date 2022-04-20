@@ -15,6 +15,7 @@
           </div>
 
           <div class="post">
+            
             <div>
               <img src="/sample.jpg">
             </div>
