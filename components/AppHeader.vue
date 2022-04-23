@@ -2,7 +2,7 @@
     <div class="header">
         <div class="inner-header">
             <div class="logo">
-                header
+                Logo
             </div>
             <div class="search">
                 <input placeholder="Search">
