@@ -1,57 +1,57 @@
 <template>
   <v-row justify="center" class="newsfeed">
     <v-col cols="12" sm="8" md="6">
-      <v-card>
+      <v-card class="d-flex">
         <div class="announcements"> 
           <div class="my-day">
             <div class="myday-one">
                 <v-avatar
                 size="70"
-                > <img src="/my-day.jpg"></v-avatar>
+                > <img src="/thor.jpg"></v-avatar>
         
-                <p>test</p>
+                <p>Thor</p>
             </div>
             <div class="myday-one">
                 <v-avatar
                 size="70"
-                > <img src="/my-day.jpg"></v-avatar>
+                > <img src="/loki.jpg"></v-avatar>
         
-                <p>test</p>
+                <p>Loki</p>
             </div>
             <div class="myday-one">
                 <v-avatar
                 size="70"
-                > <img src="/my-day.jpg"></v-avatar>
+                > <img src="/spider-man.jpg"></v-avatar>
         
-                <p>test</p>
+                <p>Spider</p>
             </div>
             <div class="myday-one">
                 <v-avatar
                 size="70"
-                > <img src="/my-day.jpg"></v-avatar>
+                > <img src="/iron-man.jpg"></v-avatar>
         
-                <p>test</p>
+                <p>Iron-man</p>
             </div>
             <div class="myday-one">
                 <v-avatar
                 size="70"
-                > <img src="/my-day.jpg"></v-avatar>
+                > <img src="/strange.jpg"></v-avatar>
         
-                <p>test</p>
+                <p>Strange</p>
             </div>
             <div class="myday-one">
                 <v-avatar
                 size="70"
-                > <img src="/my-day.jpg"></v-avatar>
+                > <img src="/hulk.jpg"></v-avatar>
         
-                <p>test</p>
+                <p>Hulk</p>
             </div>
             <div class="myday-one">
                 <v-avatar
                 size="70"
-                > <img src="/my-day.jpg"></v-avatar>
+                > <img src="/captain.jpg"></v-avatar>
         
-                <p>test</p>
+                <p>captain</p>
             </div>
             <div class="myday-one">
                 <v-avatar
@@ -84,33 +84,58 @@
           </div>
 
           <div class="post">
-            <div class="post-accnt">
-              <v-avatar
+            <div class="post-accnt d-flex ">
+              <div class="d-flex">
+                <v-avatar
                 size="35">
                 <img src="/my-day.jpg">
               </v-avatar>
+              <div class="d-flex align-center ml-2">
+                <p>Marvel</p>
+              </div>
+              </div>
+              <div class="">
+                <a href="#">...</a>
+              </div>
             </div>
             <div>
               <img src="/sample.jpg">
             </div>
-            <div>
-                <div>
-                  <v-icon>mdi-heart-outline</v-icon>
-                  <v-icon>mdi-chat-outline</v-icon>
-                  <v-icon>mdi-share-variant-outline</v-icon>
+            <div class="captions">
+                <div class="mb-2 icons">
+                  <a href="#"><v-icon>mdi-heart-outline</v-icon></a>
+                  <a href="#"><v-icon>mdi-chat-outline</v-icon></a>
+                  <a href="#"><v-icon>mdi-share-variant-outline</v-icon></a>
                 </div>
                 
                 <div>
                   <p>142,614 likes</p>
-                  <p>natgeo Photos and video by @renan_ozturk | I chronicled a National Geographic expedition that made an "elevational transect" in the Upper Paikwa River Basin, near Guyana’s border with Brazil and Venezuela. The goal: help biologist Bruce Means scale a tepui (a mesa-like mountain) to look for new species of amphibians and reptiles in one of the world’s richest and least explored hot spots of biodiversity. The final stage of our journey led us through a pristine cloud forest and culminated with a first ascent up 7,000-foot (2,100 m) Mount Weiassipu. The expedition is the subject of the magazine's April cover story.</p>
+                  <p class="post-desc">natgeo Photos and video by @renan_ozturk | I chronicled a National Geographic expedition that made an "elevational transect" in the Upper Paikwa River Basin, near Guyana’s border with Brazil and Venezuela. The goal: help biologist Bruce Means scale a tepui (a mesa-like mountain) to look for new species of amphibians and reptiles in one of the world’s richest and least explored hot spots of biodiversity. The final stage of our journey led us through a pristine cloud forest and culminated with a first ascent up 7,000-foot (2,100 m) Mount Weiassipu. The expedition is the subject of the magazine's April cover story.</p>
                   <button>View all 644 comments</button>
-                  <p>17 HOURS AGO</p>
+                  <p class="post-time">17 HOURS AGO</p>
                 </div>
             </div>
           </div>
 
         </div>
+        <div class="right-col">
+           <div class="d-flex user">
+              <div class="d-flex">
+                 <div>
+                <v-icon>mdi-account-circle</v-icon>
+                </div>  
+                <div class="ml-3 user-name">
+                  <p>User name</p>
+                  <p class="name">Name</p>
+                </div>
+              </div>
+              <div>
+                <a href="#">Switch</a>
+              </div>
+          </div>
+        </div>
       </v-card>
+
     </v-col>
   </v-row>
 </template>
@@ -152,6 +177,10 @@
       text-align: center;
     }
 
+    .myday-one img {
+          object-fit: cover;
+    }
+
     .myday-one .v-avatar {
       padding: 2px;
       display: initial;
@@ -159,7 +188,9 @@
     }
 
     .myday-one p {
+      font-size: 14px;
       margin-bottom: 0;
+      margin-top: 5px;
     }
 
     .post {
@@ -172,8 +203,89 @@
 
     .post-accnt {
       padding-left: 15px;
+      padding-right: 15px;
       padding-top: 10px;
       padding-bottom: 10px;
+      justify-content: space-between;
+    }
+    
+    .post-accnt a {
+      font-size: 25px;
+      color: #000;
+      text-decoration: none;
+    }
+
+    .post-accnt p {
+      margin-bottom: 0;
+    }
+
+    .right-col {
+      width: 32%;
+      padding-top: 3%;
+      padding-right: 2%;
+  }
+
+    .post p {
+      font-size: 14px;
+    }
+
+    .captions {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    .captions i {
+      color: #000 !important;
+    }
+
+    .captions .icons a {
+      text-decoration: none;
+    }
+
+    .post button {
+      color: #8e8e8e;
+    }
+
+    .post-desc {
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      display: -webkit-box;
+    }
+
+    .post-time {
+      font-size: 12px;
+    }
+
+    .right-col i {
+      font-size: 50px !important;
+    }
+
+    .right-col p {
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    .right-col .user {
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .right-col .user a {
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .user-name {
+      padding-top: 5px;
+    }
+
+    .user-name p:first-child {
+      color: #262626;
+    }
+
+    .name {
+      color: #8e8e8e;
     }
 
 </style>

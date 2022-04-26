@@ -87,4 +87,9 @@ export default {
         -webkit-flex: 1 0 127px;
         -ms-flex: 1 0 127px;
     }
+
+    .header-icons i {
+        font-size: 30px !important;
+        margin-left: 10px;
+    }
 </style>
