@@ -1,7 +1,9 @@
 <template>
   <v-app>
     <app-header/>
-    <Nuxt />
+    <div class="body">
+      <Nuxt />
+    </div>
   </v-app>
 </template>
 
@@ -17,3 +19,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+ .body {
+   margin-top: 60px;
+ }
+</style>
