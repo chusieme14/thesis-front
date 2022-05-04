@@ -1,9 +1,10 @@
 <template>
   <v-app>
-    <app-header/>
-    <div class="body">
+    <!-- <app-header/> -->
+    <!-- <div class="body">
       <Nuxt />
-    </div>
+    </div> -->
+    <Nuxt />
   </v-app>
 </template>
 

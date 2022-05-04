@@ -144,7 +144,7 @@
 <style>
 
     .newsfeed {
-      margin-top: 45px;
+      margin-top: 20px;
     }
 
     .announcements {
