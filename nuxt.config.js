@@ -8,7 +8,10 @@ export default {
   },
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-
+  env: {
+    // secret_key: 'eyJhbGciOiJSUzI1NiIsImtpZCI6IjhmYmRmMjQxZTdjM2E2NTEzNTYwNmRkYzFmZWQyYzU1MjI2MzBhODciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiT0hNIENPTkNFUFRJT04iLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EtL0FPaDE0R2p0c2tYTDdwYndsbG8tVXhGSUtBS2J2T25lTkplc2FSWHRUYWxOPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL3RpYm8taW4tc2hhcGUiLCJhdWQiOiJ0aWJvLWluLXNoYXBlIiwiYXV0aF90aW1lIjoxNjM1MjEyNzQ1LCJ1c2VyX2lkIjoiOEYzaUEybXUxNFNFNk84cENnbm1WUTA1M0p5MSIsInN1YiI6IjhGM2lBMm11MTRTRTZPOHBDZ25tVlEwNTNKeTEiLCJpYXQiOjE2MzUyMTI3NDUsImV4cCI6MTYzNTIxNjM0NSwiZW1haWwiOiJvaG0uY29uY2VwdGlvbkBnbWFpbC5jb20iLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJnb29nbGUuY29tIjpbIjEwOTY5MzEzNzQ1NzIyMTEwMTQ2OCJdLCJlbWFpbCI6WyJvaG0uY29uY2VwdGlvbkBnbWFpbC5jb20iXX0sInNpZ25faW5fcHJvdmlkZXIiOiJnb29nbGUuY29tIn19.Ae6-T_9E7CnTs9H7V5DHMwAE8KhSEMkZeWt1D__nk8ZbThVUCGSnHOXBzzcB7q7V7oaHAviTFV3VRXVGS2RRuFu6vEC1OlgI03-m5SFVUmvNqoQxAUPFtrGpymzM8eVH8azvFJx4sMJoGEG7Fory-GBMQDKalNqgs4Ny7t8x_-u8sGp5WDuSuWr5JUHPAT65hMlUX81L7_gbc-xhGm-0asESDZcIbWRD_mxcoZaR59PbljVnLbdhwcq5VMTw98foQQjEhOcexaw8pl9M2X8Bnx6h33cRWMdjk2-5ma-lVrB3oYK3JRHyJL2jYqUgichztFDhsSSeuIvzarjqE3ciyQ',
+    baseUrl: process.env.API_URL
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     titleTemplate: '%s - thesis-front',
@@ -43,18 +46,47 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+    '@nuxtjs/dotenv'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/auth-next',
   ],
+
+  auth: {
+    redirect: {
+        logout: '/login',
+        login: '/login',
+        callback: '/login',
+        home: '',
+    },
+    strategies: {
+        local: {
+            token: {
+                property: 'access_token',
+                global: true,
+            },
+            user: {
+                property: '',
+            },
+            tokenType: '',
+            endpoints: {
+                login: { url: 'login', method: 'post' },
+                logout: { url: 'logout', method: 'post' },
+                user: { url: 'user-details', method: 'get' }
+            }
+        }
+    },
+    // plugins: ['@/plugins/auth-lang-redirect.js']
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL:process.env.API_URL,
   },
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify

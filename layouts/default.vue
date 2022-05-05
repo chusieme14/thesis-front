@@ -1,10 +1,10 @@
 <template>
   <v-app>
-    <!-- <app-header/> -->
-    <!-- <div class="body">
+    <app-header v-if="$auth.loggedIn"/>
+    <div v-if="$auth.loggedIn" class="body">
       <Nuxt />
-    </div> -->
-    <Nuxt />
+    </div>
+    <Nuxt v-if="!$auth.loggedIn" />
   </v-app>
 </template>
 

@@ -125,12 +125,12 @@
                 <v-icon>mdi-account-circle</v-icon>
                 </div>  
                 <div class="ml-3 user-name">
-                  <p>User name</p>
+                  <p>{{$auth.user.email}}</p>
                   <p class="name">Name</p>
                 </div>
               </div>
               <div>
-                <a href="#">Switch</a>
+                <v-btn text @click="logout">Switch</v-btn>
               </div>
           </div>
         </div>
@@ -139,7 +139,34 @@
     </v-col>
   </v-row>
 </template>
+<script>
+export default {
+  middleware: 'auth',
+  data(){
+    return {
+      
+    }
+  },
+  methods:{
+    logout(){
+      this.$auth.logout()
+    }
+  },
+  head(){
+    return {
+      title:'Home',
+      meta:[
+        {
+          hid:"description",
+          name:"description",
+          content:"this is the home page"
+        }
+      ]
+    }
+  }
 
+}
+</script>
 
 <style>
 
@@ -289,28 +316,3 @@
     }
 
 </style>
-
-<script>
-export default {
-  data(){
-    return {
-      
-    }
-  },
-  methods:{
-
-  },
-  head(){
-    return {
-      title:'Home',
-      meta:[
-        {
-          hid:"description",
-          name:"description",
-          content:"this is the home page"
-        }
-      ]
-    }
-  }
-}
-</script>
