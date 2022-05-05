@@ -120,7 +120,7 @@
         </div>
         <div class="right-col">
            <div class="d-flex user">
-              <div class="d-flex">
+              <div class="d-flex for-user">
                  <div>
                 <v-icon>mdi-account-circle</v-icon>
                 </div>  
@@ -129,7 +129,7 @@
                   <p class="name">{{$auth.user.fullname}}</p>
                 </div>
               </div>
-              <div>
+              <div class="for-logout">
                 <v-btn text @click="logout">Switch</v-btn>
               </div>
           </div>
@@ -307,8 +307,23 @@ export default {
       padding-top: 5px;
     }
 
+    .user-name p {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 45%;
+    }
+
     .user-name p:first-child {
       color: #262626;
+    }
+
+    .user .for-user {
+      width: 67%;
+    } 
+
+    .user .for-logout {
+      width: 30%;
     }
 
     .name {

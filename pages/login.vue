@@ -26,6 +26,10 @@
                     <v-spacer></v-spacer>
                     <v-btn @click="login" color="success">Log In</v-btn>
                 </v-card-actions>
+                 <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn class="forgot-pass">Forgot password ?</v-btn>
+                </v-card-actions>
             </v-card>
         <v-snackbar
             :timeout="-1"
@@ -35,6 +39,9 @@
         >
             Something wrong please check you're credential.
         </v-snackbar>
+            <div class="no-accnt">
+                <v-card-text>Don't have an account? <a href="#">Sign up</a></v-card-text>
+            </div>
         </div>
     </div>
 </template>
@@ -80,6 +87,46 @@ export default {
         display: flex;
         justify-content: center;
         flex-direction: column;
+    }
+
+    .login-inner .v-card {
+        background-position: top;
+        background-size: 47%;
+        background-image: linear-gradient(rgba(255,255,255,.6), rgba(255,255,255,.6)), url('/logo.png');
+    }
+
+    .login-inner .v-card,
+    .no-accnt {
+        border: 1px solid rgba(var(--b6a,219,219,219),1);
+    }
+
+    .login-inner .v-card .theme--light.v-input input {
+            color: rgba(0, 0, 0, 1) !important;
+    }
+
+    .no-accnt {
+        text-align: center;
+        margin-top: 20px;
+        box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+    }
+
+     .login-inner .v-card .v-card__text {
+         padding-bottom: 0 !important;
+     }
+
+     .login-inner .v-card button {
+         width: 96%;
+     }
+
+     .login-inner .v-card .v-card__actions {
+        display: block;
+        text-align: center;
+     }
+
+    .forgot-pass,
+    .forgot-pass:hover {
+        box-shadow: none;
+        background-color: transparent !important;
     }
 
     .login-form {
