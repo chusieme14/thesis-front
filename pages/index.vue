@@ -126,7 +126,7 @@
                 </div>  
                 <div class="ml-3 user-name">
                   <p>{{$auth.user.email}}</p>
-                  <p class="name">Name</p>
+                  <p class="name">{{$auth.user.fullname}}</p>
                 </div>
               </div>
               <div>

@@ -57,7 +57,7 @@ export default {
                         password:loginCredential.password
                     }
                 })
-                router.push({ path: '/' })
+                this.$router.push({ path: '/' })
             } catch (error) {
                 this.hasError = true
 
