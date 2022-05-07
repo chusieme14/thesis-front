@@ -2,15 +2,15 @@
     <div class="header">
         <div class="inner-header">
             <div class="logo">
-                Logo
+                <v-img @click="$router.push({path:'/'})" width="65" src="/logo.png"></v-img>
             </div>
             <div class="search">
                 <input placeholder="Search">
             </div>
             <div class="header-icons text-right">
-                <v-icon>mdi-home</v-icon>
-                <v-icon>mdi-heart-outline</v-icon>
-                <v-icon>mdi-account-circle</v-icon>
+                <v-icon @click="$router.push({path:'/'})">mdi-home</v-icon>
+                <!-- <v-icon>mdi-heart-outline</v-icon> -->
+                <v-icon @click="$router.push({path:'/profile'})">mdi-account-circle</v-icon>
             </div>
         </div>
     </div>

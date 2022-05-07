@@ -40,13 +40,25 @@
             Something wrong please check you're credential.
         </v-snackbar>
             <div class="no-accnt">
-                <v-card-text>Don't have an account? <a href="#">Sign up</a></v-card-text>
+                <v-card-text>Don't have an account? <v-btn text @click="$router.push({path: '/register'})">Sign up</v-btn></v-card-text>
             </div>
         </div>
     </div>
 </template>
 <script>
 export default {
+    head(){
+        return {
+            title:'Login',
+            meta:[
+                {
+                hid:"description",
+                name:"description",
+                content:"this is the login page"
+                }
+            ]
+        }
+    },
     data(){
         return{
             payload:{},

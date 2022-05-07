@@ -3,7 +3,7 @@
     <v-col cols="12" sm="8" md="6">
       <v-card class="d-flex">
         <div class="announcements"> 
-          <div class="my-day">
+          <!-- <div class="my-day">
             <div class="myday-one">
                 <v-avatar
                 size="70"
@@ -81,7 +81,7 @@
         
                 <p>test</p>
             </div>
-          </div>
+          </div> -->
 
           <div class="post">
             <div class="post-accnt d-flex ">
@@ -102,15 +102,15 @@
               <img src="/sample.jpg">
             </div>
             <div class="captions">
-                <div class="mb-2 icons">
+                <!-- <div class="mb-2 icons">
                   <a href="#"><v-icon>mdi-heart-outline</v-icon></a>
                   <a href="#"><v-icon>mdi-chat-outline</v-icon></a>
                   <a href="#"><v-icon>mdi-share-variant-outline</v-icon></a>
-                </div>
+                </div> -->
                 
                 <div>
-                  <p>142,614 likes</p>
-                  <p class="post-desc">natgeo Photos and video by @renan_ozturk | I chronicled a National Geographic expedition that made an "elevational transect" in the Upper Paikwa River Basin, near Guyana’s border with Brazil and Venezuela. The goal: help biologist Bruce Means scale a tepui (a mesa-like mountain) to look for new species of amphibians and reptiles in one of the world’s richest and least explored hot spots of biodiversity. The final stage of our journey led us through a pristine cloud forest and culminated with a first ascent up 7,000-foot (2,100 m) Mount Weiassipu. The expedition is the subject of the magazine's April cover story.</p>
+                  <p>Title</p>
+                  <p class="post-desc">Description</p>
                   <button>View all 644 comments</button>
                   <p class="post-time">17 HOURS AGO</p>
                 </div>
@@ -122,7 +122,9 @@
            <div class="d-flex user">
               <div class="d-flex for-user">
                  <div>
-                <v-icon>mdi-account-circle</v-icon>
+                   <v-avatar size="65">
+                     <v-img :src="'http://localhost:8000'+$auth.user.avatar"></v-img>
+                   </v-avatar>
                 </div>  
                 <div class="ml-3 user-name">
                   <p>{{$auth.user.email}}</p>

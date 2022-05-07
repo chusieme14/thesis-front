@@ -1,48 +1,59 @@
 <template>
-     <div>
-         <h1>Personal Informations</h1>
-        <v-text-field class="mb-4" label="First Name" hide-details="auto"></v-text-field>
-        <v-text-field class="mb-4" label="Last Name" hide-details="auto"></v-text-field>
-        <v-text-field class="mb-4" label="Middle Name" hide-details="auto"></v-text-field>
-            
-        <v-text-field class="mb-4" v-model="email" label="Student Number" hide-details="auto"></v-text-field>
-        <v-text-field label="Contact Number" type="number" hide-details="auto"></v-text-field>
-        <div class="civil-status">
-            <v-select :items="civil_status" label="Civil Status" dense></v-select>
-        </div>
-        <div>
-            <v-menu
-            ref="menu"
-            v-model="menu"
-            :close-on-content-click="false"
-            transition="scale-transition"
-            offset-y
-            min-width="auto"
-            >
-            <template v-slot:activator="{ on, attrs }">
-                <v-text-field
-                v-model="date"
-                label="Birthday date"
-                prepend-icon="mdi-calendar"
-                readonly
-                v-bind="attrs"
-                v-on="on"
-                ></v-text-field>
-            </template>
-            <v-date-picker
-                v-model="date"
-                :active-picker.sync="activePicker"
-                :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
-                min="1950-01-01"
-                @change="save"
-            ></v-date-picker>
-            </v-menu>
-        </div>
-        <v-text-field class="mb-4 pt-0" label="Location of Residence" hide-details="auto"></v-text-field>
-        <div class="gender">
-            <v-select :items="gender" label="Gender" dense></v-select>
-        </div>
-    </div>
+  <v-card>
+    <v-card-title>Personal Informations</v-card-title>
+    <v-card-text>
+      <v-text-field v-model="payload.first_name" label="First Name"></v-text-field>
+      <v-text-field v-model="payload.last_name" label="Last Name"></v-text-field>
+      <v-text-field v-model="payload.middle_name" label="Middle Name"></v-text-field>
+          
+      <v-text-field v-model="payload.email" label="Student Number"></v-text-field>
+      <v-text-field v-model="payload.contact_number" label="Contact Number" type="number"></v-text-field>
+      <v-autocomplete
+        v-model="payload.detail.civil_status"
+        :items="civil_status"
+        label="Civil status"
+      ></v-autocomplete>
+      <v-menu
+        ref="menu"
+        v-model="menu"
+        :close-on-content-click="false"
+        transition="scale-transition"
+        offset-y
+        min-width="auto"
+      >
+        <template v-slot:activator="{ on, attrs }">
+            <v-text-field
+            v-model="payload.detail.birthday"
+            label="Birthday date"
+            readonly
+            v-bind="attrs"
+            v-on="on"
+            ></v-text-field>
+        </template>
+        <v-date-picker
+            v-model="payload.detail.birthday"
+            :active-picker.sync="activePicker"
+            :max="(new Date(Date.now() - (new Date()).getTimezoneOffset() * 60000)).toISOString().substr(0, 10)"
+            min="1950-01-01"
+            @change="save"
+        ></v-date-picker>
+      </v-menu>
+      <v-text-field v-model="payload.detail.residence" label="Location of Residence"></v-text-field>
+      <v-autocomplete v-model="payload.detail.gender" :items="gender" label="Gender"></v-autocomplete>
+    </v-card-text>
+    <v-card-actions>
+      <v-spacer></v-spacer>
+      <v-btn @click="update" color="success">Save</v-btn>
+    </v-card-actions>
+    <v-snackbar
+        :timeout="-1"
+        v-model="issuccess"
+        tile
+        color="success"
+    >
+      Change already save
+    </v-snackbar>
+  </v-card>
 </template>
 
 <style scoped>
@@ -60,6 +71,11 @@
       gender: ['Male', 'Female'],
       date: null,
       menu: false,
+      issuccess: false,
+      activePicker:null,
+      payload:{
+        detail:{}
+      },
     }),
     watch: {
       menu (val) {
@@ -70,6 +86,24 @@
       save (date) {
         this.$refs.menu.save(date)
       },
+      update(){
+        this.$axios.put(`graduates/${this.payload.id}`, this.payload).then(({data})=>{
+          this.issuccess = true
+
+          setTimeout(() => {
+            this.issuccess = false
+          }, 3000);
+        })
+      },
+      getGraduate(){
+        this.$axios.get(`graduates/${this.$auth.user.id}`).then(({data})=>{
+          this.payload = data
+          if(this.payload.detail==null) this.payload.detail = {}
+        })
+      }
     },
+    created(){
+      this.getGraduate()
+    }
   }
 </script>

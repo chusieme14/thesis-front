@@ -14,19 +14,19 @@
            
         </div>
     </div>
-
-
 </template>
 <script>
 import PersonalInfo from "../../components/personal-info.vue";
 export default {
+    middleware: 'auth',
     components:{PersonalInfo},
     data(){
         return{
             tabs:1,
-            tabs:2,
-            tabs:3
         }
+    },
+    created(){
+        console.log(this.$route.params.id,"params")
     }
 }
 </script>
