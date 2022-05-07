@@ -21,7 +21,7 @@
           <template v-slot:activator="{ on, attrs }">
               <v-text-field
               v-model="payload.detail.employment_date"
-              label="Birthday date"
+              label="Employment date"
               readonly
               v-bind="attrs"
               v-on="on"
