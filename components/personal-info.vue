@@ -12,6 +12,7 @@
         v-model="payload.detail.civil_status"
         :items="civil_status"
         label="Civil status"
+        attach
       ></v-autocomplete>
       <v-menu
         ref="menu"
@@ -39,7 +40,7 @@
         ></v-date-picker>
       </v-menu>
       <v-text-field v-model="payload.detail.residence" label="Location of Residence"></v-text-field>
-      <v-autocomplete v-model="payload.detail.gender" :items="gender" label="Gender"></v-autocomplete>
+      <v-autocomplete attach v-model="payload.detail.gender" :items="gender" label="Gender"></v-autocomplete>
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>

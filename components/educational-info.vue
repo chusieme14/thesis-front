@@ -6,6 +6,7 @@
                 :items="educ_attain"
                 v-model="payload.detail.attainment"
                 label="High Educational Attainment"
+                attach
             >
             </v-autocomplete>
             <v-autocomplete
@@ -14,6 +15,7 @@
                 label="Professional Exam Passed"
                 item-text="name"
                 item-value="id"
+                attach
             >
             </v-autocomplete>
             <v-autocomplete
@@ -22,6 +24,7 @@
                 label="Course"
                 item-text="name"
                 item-value="id"
+                attach
             >
             </v-autocomplete>
             <v-autocomplete
@@ -31,6 +34,7 @@
                 :menu-props="{'background-color':'#777'}"
                 filled
                 dense
+                attach
             ></v-autocomplete>
         </v-card-text>
         <v-card-actions>

@@ -45,12 +45,39 @@
           label="Employment status"
         >
         </v-autocomplete>
+        <v-text-field
+          v-model="payload.detail.c_address"
+          label="Complete address"
+        >
+        </v-text-field>
+        <v-text-field
+          v-model="payload.detail.c_city"
+          label="City"
+        >
+        </v-text-field>
+        <v-autocomplete
+          v-model="payload.detail.country_id"
+          label="Country"
+          :items="countries"
+          item-text="name"
+          item-value="id"
+          attach
+        >
+        </v-autocomplete>
       </template>
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn color="success">Save</v-btn>
+      <v-btn @click="update" color="success">Save</v-btn>
     </v-card-actions>
+    <v-snackbar
+        :timeout="-1"
+        v-model="issuccess"
+        tile
+        color="success"
+    >
+    Change already save
+    </v-snackbar>
   </v-card>
 </template>
 <script>
@@ -59,6 +86,7 @@
       return {
         activePicker:null,
         menu:false,
+        issuccess:false,
         empStatus:[
           'Regular',
           'Contractual'
@@ -75,8 +103,35 @@
         ],
         payload:{
           detail:{}
-        }
+        },
+        countries:[]
       }
+    },
+    methods:{
+      update(){
+        this.$axios.put(`graduates/${this.payload.id}`, this.payload).then(({data})=>{
+        this.issuccess = true
+
+        setTimeout(() => {
+            this.issuccess = false
+        }, 3000);
+        })
+      },
+      getCountries(){
+          this.$axios.get(`countries`).then(({data})=>{
+              this.countries = data.data
+          })
+      },
+      getGraduate(){
+          this.$axios.get(`graduates/${this.$auth.user.id}`).then(({data})=>{
+              this.payload = data
+              if(this.payload.detail==null) this.payload.detail = {}
+          })
+      }
+    },
+    created(){
+      this.getGraduate()
+      this.getCountries()
     },
     watch: {
       menu (val) {
