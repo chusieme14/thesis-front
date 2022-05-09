@@ -44,6 +44,7 @@
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
+      <v-btn @click="copy" color="success">Copy shared link</v-btn>
       <v-btn @click="update" color="success">Save</v-btn>
     </v-card-actions>
     <v-snackbar
@@ -68,6 +69,7 @@
 <script>
   export default {
     data: () => ({
+      appUrl:process.env.appUrl,
       civil_status: ['Single', 'Married', 'Separated', 'Widowed'],
       gender: ['Male', 'Female'],
       date: null,
@@ -84,6 +86,9 @@
       },
     },
     methods: {
+      copy(){
+        navigator.clipboard.writeText(this.appUrl+'/profile/'+this.payload.share_code)
+      },
       save (date) {
         this.$refs.menu.save(date)
       },

@@ -2,12 +2,14 @@
     <div class="profile">
         <div class="categ">
             <ul>
+                <li><v-btn @click="tabs=0">Change password/profile</v-btn></li>
                 <li><v-btn @click="tabs=1">personal information</v-btn></li>
                 <li><v-btn @click="tabs=2">Educational Informations</v-btn></li>
                 <li><v-btn @click="tabs=3">Employment Informations</v-btn></li>
             </ul>
         </div>
         <div class="infos">
+            <password-profile v-if="tabs==0"></password-profile>
             <personal-info v-if="tabs==1"></personal-info>
             <educational-info v-if="tabs==2"></educational-info>
             <employment-info v-if="tabs==3"></employment-info>
@@ -16,13 +18,14 @@
     </div>
 </template>
 <script>
+import PasswordProfile from '~/components/password-profile.vue';
 import PersonalInfo from "../../components/personal-info.vue";
 export default {
     middleware: 'auth',
-    components:{PersonalInfo},
+    components:{PersonalInfo, PasswordProfile},
     data(){
         return{
-            tabs:1,
+            tabs:0,
         }
     },
     created(){

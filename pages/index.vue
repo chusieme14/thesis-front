@@ -3,103 +3,23 @@
     <v-col cols="12" sm="8" md="6">
       <v-card class="d-flex">
         <div class="announcements"> 
-          <!-- <div class="my-day">
-            <div class="myday-one">
-                <v-avatar
-                size="70"
-                > <img src="/thor.jpg"></v-avatar>
-        
-                <p>Thor</p>
-            </div>
-            <div class="myday-one">
-                <v-avatar
-                size="70"
-                > <img src="/loki.jpg"></v-avatar>
-        
-                <p>Loki</p>
-            </div>
-            <div class="myday-one">
-                <v-avatar
-                size="70"
-                > <img src="/spider-man.jpg"></v-avatar>
-        
-                <p>Spider</p>
-            </div>
-            <div class="myday-one">
-                <v-avatar
-                size="70"
-                > <img src="/iron-man.jpg"></v-avatar>
-        
-                <p>Iron-man</p>
-            </div>
-            <div class="myday-one">
-                <v-avatar
-                size="70"
-                > <img src="/strange.jpg"></v-avatar>
-        
-                <p>Strange</p>
-            </div>
-            <div class="myday-one">
-                <v-avatar
-                size="70"
-                > <img src="/hulk.jpg"></v-avatar>
-        
-                <p>Hulk</p>
-            </div>
-            <div class="myday-one">
-                <v-avatar
-                size="70"
-                > <img src="/captain.jpg"></v-avatar>
-        
-                <p>captain</p>
-            </div>
-            <div class="myday-one">
-                <v-avatar
-                size="70"
-                > <img src="/my-day.jpg"></v-avatar>
-        
-                <p>test</p>
-            </div>
-            <div class="myday-one">
-                <v-avatar
-                size="70"
-                > <img src="/my-day.jpg"></v-avatar>
-        
-                <p>test</p>
-            </div>
-            <div class="myday-one">
-                <v-avatar
-                size="70"
-                > <img src="/my-day.jpg"></v-avatar>
-        
-                <p>test</p>
-            </div>
-            <div class="myday-one">
-                <v-avatar
-                size="70"
-                > <img src="/my-day.jpg"></v-avatar>
-        
-                <p>test</p>
-            </div>
-          </div> -->
-
-          <div class="post">
+          <div v-for="post in posts" :key="post.id" class="post">
             <div class="post-accnt d-flex ">
               <div class="d-flex">
-                <v-avatar
+                <!-- <v-avatar
                 size="35">
                 <img src="/my-day.jpg">
               </v-avatar>
               <div class="d-flex align-center ml-2">
                 <p>Marvel</p>
-              </div>
+              </div> -->
               </div>
               <div class="">
                 <a href="#">...</a>
               </div>
             </div>
             <div>
-              <img src="/sample.jpg">
+              <img :src="imageUrl+post.image">
             </div>
             <div class="captions">
                 <!-- <div class="mb-2 icons">
@@ -109,8 +29,8 @@
                 </div> -->
                 
                 <div>
-                  <p>Title</p>
-                  <p class="post-desc">Description</p>
+                  <p>{{post.title}}</p>
+                  <p class="post-desc">{{post.description}}</p>
                   <button>View all 644 comments</button>
                   <p class="post-time">17 HOURS AGO</p>
                 </div>
@@ -123,7 +43,7 @@
               <div class="d-flex for-user">
                  <div>
                    <v-avatar size="65">
-                     <v-img :src="'http://localhost:8000'+$auth.user.avatar"></v-img>
+                     <v-img :src="imageUrl+$auth.user.avatar"></v-img>
                    </v-avatar>
                 </div>  
                 <div class="ml-3 user-name">
@@ -146,13 +66,23 @@ export default {
   middleware: 'auth',
   data(){
     return {
-      
+      imageUrl:process.env.imageUrl,
+      posts:[]
     }
   },
   methods:{
     logout(){
       this.$auth.logout()
+    },
+    getAllPost(){
+      this.$axios.get(`posts`).then(({data})=>{
+        this.posts = data.data
+        console.log(this.posts,"posts")
+      })
     }
+  },
+  created(){
+    this.getAllPost()
   },
   head(){
     return {
