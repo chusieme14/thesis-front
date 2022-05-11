@@ -7,7 +7,7 @@
       <v-text-field v-model="payload.middle_name" label="Middle Name"></v-text-field>
           
       <v-text-field v-model="payload.email" label="Student Number"></v-text-field>
-      <v-text-field v-model="payload.contact_number" label="Contact Number" type="number"></v-text-field>
+      <v-text-field v-model="payload.contact_number" label="Contact Number"></v-text-field>
       <v-autocomplete
         v-model="payload.detail.civil_status"
         :items="civil_status"
@@ -77,7 +77,18 @@
       issuccess: false,
       activePicker:null,
       payload:{
-        detail:{}
+        detail:{
+          civil_status:null,
+          birthday:null,
+          residence:null
+        }
+      },
+      old_payload:{
+        detail:{
+          civil_status:null,
+          birthday:null,
+          residence:null
+        }
       },
     }),
     watch: {
@@ -93,6 +104,9 @@
         this.$refs.menu.save(date)
       },
       update(){
+        if(this.$route.params.code && this.$route.params.code!=this.$auth.user.share_code) {
+          this.payload.code = this.$route.params.code
+        }
         this.$axios.put(`graduates/${this.payload.id}`, this.payload).then(({data})=>{
           this.issuccess = true
 
@@ -105,8 +119,12 @@
         this.$axios.get(`graduates/${this.$auth.user.id}`).then(({data})=>{
           this.payload = data
           if(this.payload.detail==null) this.payload.detail = {}
+          Object.assign(this.old_payload, this.payload)
         })
       }
+    },
+    computed:{
+      
     },
     created(){
       this.getGraduate()

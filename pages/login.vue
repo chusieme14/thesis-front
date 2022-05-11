@@ -76,7 +76,16 @@ export default {
                         password:loginCredential.password
                     }
                 })
-                this.$router.push({ path: '/' })
+                if(this.$auth.user){
+                    if(this.$nuxt.context.from){
+                        console.log(this.$nuxt.context.to.fullPath.slice(1),"prevvvvvvvv")
+                        setTimeout(() => {
+                            this.$router.push({ path: this.$nuxt.context.from.fullPath.slice(1) })
+                        }, 1000);
+                    }else{
+                        this.$router.push({ path: '/' })
+                    }
+                }
             } catch (error) {
                 this.hasError = true
 
@@ -84,7 +93,12 @@ export default {
                     this.hasError = false
                 }, 3000);
             }
+        },
+        saveCurrentRoute(){
+            localStorage.setItem('current_path', )
         }
+    },
+    created(){
     }
 }
 </script>

@@ -31,8 +31,7 @@
                 <div>
                   <p>{{post.title}}</p>
                   <p class="post-desc">{{post.description}}</p>
-                  <button>View all 644 comments</button>
-                  <p class="post-time">17 HOURS AGO</p>
+                  <button @click="showPost(post)">View more</button>
                 </div>
             </div>
           </div>
@@ -67,7 +66,9 @@ export default {
   data(){
     return {
       imageUrl:process.env.imageUrl,
-      posts:[]
+      posts:[],
+      showpost:false,
+      selectedPost:null
     }
   },
   methods:{
@@ -79,6 +80,10 @@ export default {
         this.posts = data.data
         console.log(this.posts,"posts")
       })
+    },
+    showPost(post){
+      this.showpost = true
+      console.log(post,"test post")
     }
   },
   created(){

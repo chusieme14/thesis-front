@@ -76,12 +76,15 @@
       },
       methods:{
             update(){
+                if(this.$route.params.code && this.$route.params.code!=this.$auth.user.share_code) {
+                    this.payload.code = this.$route.params.code
+                }
                 this.$axios.put(`graduates/${this.payload.id}`, this.payload).then(({data})=>{
-                this.issuccess = true
+                    this.issuccess = true
 
-                setTimeout(() => {
-                    this.issuccess = false
-                }, 3000);
+                    setTimeout(() => {
+                        this.issuccess = false
+                    }, 3000);
                 })
             },
             getAllCourse(){
