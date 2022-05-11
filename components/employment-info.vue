@@ -88,8 +88,11 @@
         menu:false,
         issuccess:false,
         empStatus:[
-          'Regular',
-          'Contractual'
+          'Permanent',
+          'Contractual',
+          'Self-employed',
+          'Casual',
+          'Not Applicable',
         ],
         booleanOptions:[
           {
