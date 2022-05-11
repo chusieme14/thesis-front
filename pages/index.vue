@@ -38,8 +38,8 @@
 
         </div>
         <div class="right-col">
-           <div class="d-flex user">
-              <div class="d-flex for-user">
+           <div class="user text-center">
+              <div class="for-user">
                  <div>
                    <v-avatar size="65">
                      <v-img :src="imageUrl+$auth.user.avatar"></v-img>
@@ -248,19 +248,10 @@ export default {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      width: 45%;
     }
 
     .user-name p:first-child {
       color: #262626;
-    }
-
-    .user .for-user {
-      width: 67%;
-    } 
-
-    .user .for-logout {
-      width: 30%;
     }
 
     .name {

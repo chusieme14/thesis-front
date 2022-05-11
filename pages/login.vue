@@ -1,7 +1,7 @@
 <template>
     <div class="login">
         <div class="login-inner">
-            <v-card min-width="500">
+            <v-card>
                 <v-card-title>NWSSU Alumni</v-card-title>
                 <v-card-text>
                     <v-form ref="form" lazy-validation>
@@ -118,6 +118,7 @@ export default {
     .login-inner .v-card {
         background-position: top;
         background-size: 47%;
+        width: 500px;
         background-image: linear-gradient(rgba(255,255,255,.6), rgba(255,255,255,.6)), url('/logo.png');
     }
 
@@ -172,5 +173,11 @@ export default {
         overflow: hidden;
         padding: 9px 0 7px 8px;
         text-overflow: ellipsis;
+    }
+
+    @media(max-width: 480px) {
+        .login .login-inner .v-card {
+            width: 430px !important;
+        }
     }
 </style>
