@@ -11,6 +11,9 @@
                 <v-icon @click="$router.push({path:'/'})">mdi-home</v-icon>
                 <!-- <v-icon>mdi-heart-outline</v-icon> -->
                 <v-icon @click="$router.push({path:'/profile'})">mdi-account-circle</v-icon>
+                <div class="for-logout">
+                <v-btn text @click="logout">Switch</v-btn>
+              </div>
             </div>
         </div>
     </div>
@@ -93,6 +96,10 @@ export default {
         margin-left: 10px;
     }
 
+    .header .for-logout {
+        display: none;
+    }
+
     @media(max-width: 480px) {
         .search {
             display: none;
@@ -100,6 +107,10 @@ export default {
 
         .header-icons button {
             margin-left: 10px;
+        }
+
+        .header .for-logout {
+            display: block;
         }
     }
 

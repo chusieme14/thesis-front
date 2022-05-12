@@ -84,4 +84,15 @@ export default {
         justify-content: start !important;
     }
 
+    @media(max-width: 480px) {
+        .profile {
+            display: block;
+        }
+
+        .profile .categ,
+        .profile .infos {
+            width: 100%;
+        }
+    }
+
 </style>
