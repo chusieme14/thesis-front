@@ -177,7 +177,7 @@ export default {
 
     @media(max-width: 480px) {
         .login .login-inner .v-card {
-            width: 430px !important;
+            width: 400px !important;
         }
     }
 </style>
