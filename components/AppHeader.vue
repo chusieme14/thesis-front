@@ -89,6 +89,8 @@ export default {
         -webkit-box-flex: 1;
         -webkit-flex: 1 0 127px;
         -ms-flex: 1 0 127px;
+        display: flex;
+        justify-content: end;
     }
 
     .header-icons i {

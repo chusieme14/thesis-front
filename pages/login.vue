@@ -1,7 +1,7 @@
 <template>
     <div class="login">
         <div class="login-inner">
-            <v-card>
+            <v-card class="login-cont">
                 <v-card-title>NWSSU Alumni</v-card-title>
                 <v-card-text>
                     <v-form ref="form" lazy-validation>
@@ -176,7 +176,7 @@ export default {
     }
 
     @media(max-width: 480px) {
-        .login .login-inner .v-card {
+        .login .login-inner .login-cont {
             width: 400px !important;
         }
     }
