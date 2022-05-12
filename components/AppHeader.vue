@@ -5,7 +5,7 @@
                 <v-img @click="$router.push({path:'/'})" width="65" src="/logo.png"></v-img>
             </div>
             <div class="search">
-                <input placeholder="Search">
+                <!-- <input placeholder="Search"> -->
             </div>
             <div class="header-icons text-right">
                 <v-icon @click="$router.push({path:'/'})">mdi-home</v-icon>
