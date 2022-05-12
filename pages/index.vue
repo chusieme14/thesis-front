@@ -56,19 +56,30 @@
           </div>
         </div>
       </v-card>
-
     </v-col>
+    <v-dialog
+        v-model="showpost"
+        hide-overlay
+        width="1000"
+    >
+      <view-post
+        :data="selectedPost"
+        :imageUrl="imageUrl"
+      />
+    </v-dialog>
   </v-row>
 </template>
 <script>
+import viewPost from '~/components/view-post.vue'
 export default {
+  components: { viewPost },
   middleware: 'auth',
   data(){
     return {
       imageUrl:process.env.imageUrl,
       posts:[],
       showpost:false,
-      selectedPost:null
+      selectedPost:{}
     }
   },
   methods:{
@@ -83,6 +94,7 @@ export default {
     },
     showPost(post){
       this.showpost = true
+      Object.assign(this.selectedPost, post)
       console.log(post,"test post")
     }
   },
