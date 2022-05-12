@@ -258,4 +258,14 @@ export default {
       color: #8e8e8e;
     }
 
+    @media(max-width: 480px) {
+      .right-col {
+        display: none;
+      }
+
+      .announcements {
+        margin-right: 0px;
+      }
+    }
+
 </style>

@@ -92,4 +92,15 @@ export default {
         font-size: 30px !important;
         margin-left: 10px;
     }
+
+    @media(max-width: 480px) {
+        .search {
+            display: none;
+        }
+
+        .header-icons button {
+            margin-left: 10px;
+        }
+    }
+
 </style>
