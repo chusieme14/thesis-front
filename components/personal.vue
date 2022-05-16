@@ -83,6 +83,16 @@
                             ></v-text-field>
                         </v-col>
                         <v-col class="image-text-field" cols="12" sm="3">
+                            <label><span class="text-danger">*</span> Password </label>
+                            <v-text-field
+                                :rules="[() => !!payload.password ||  '']"
+                                v-model="payload.password"
+                                dense
+                                filled
+                                type="password"
+                            ></v-text-field>
+                        </v-col>
+                        <v-col class="image-text-field" cols="12" sm="2">
                             <label><span class="text-danger">*</span> Contact number </label>
                             <v-text-field
                                 :rules="[() => !!payload.contact_number ||  '']"
@@ -93,6 +103,8 @@
                                 type="number"
                             ></v-text-field>
                         </v-col>
+                    </v-row>
+                    <v-row>
                         <v-col class="image-text-field" cols="12" sm="2">
                             <label>Civil status </label>
                             <v-autocomplete
@@ -105,8 +117,6 @@
                                 dense
                             ></v-autocomplete>
                         </v-col>
-                    </v-row>
-                    <v-row>
                         <v-col class="image-text-field" cols="12" sm="3">
                             <label>Birthday </label>
                             <v-menu
