@@ -41,6 +41,42 @@
       </v-menu>
       <v-text-field v-model="payload.detail.residence" label="Location of Residence"></v-text-field>
       <v-autocomplete attach v-model="payload.detail.gender" :items="gender" label="Gender"></v-autocomplete>
+      <v-autocomplete
+          :items="incomes"
+          item-value="id"
+          item-text="value"
+          v-model="payload.detail.income"
+          label="Gross monthly income"
+          attach
+      >
+      </v-autocomplete>
+      <v-autocomplete
+          :items="time_jobs"
+          v-model="payload.detail.time_jobs"
+          label="Time to get the job"
+          item-text="value"
+          item-value="id"
+          attach
+      >
+      </v-autocomplete>
+      <v-autocomplete
+          :items="booleanOptions"
+          v-model="payload.detail.curriculum"
+          label="Relevance of the curriculum"
+          item-text="name"
+          item-value="id"
+          attach
+      >
+      </v-autocomplete>
+      <v-autocomplete
+          :items="booleanOptions"
+          v-model="payload.detail.promotion"
+          label="Have you been promoted after graduation?"
+          item-text="name"
+          item-value="id"
+          attach
+      >
+      </v-autocomplete>
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
@@ -72,6 +108,68 @@
       appUrl:process.env.appUrl,
       civil_status: ['Single', 'Married', 'Separated', 'Widowed'],
       gender: ['Male', 'Female'],
+      incomes: [
+                {
+                    id:1,
+                    value:'below 5,000'
+                },
+                {
+                    id:2,
+                    value:'5,000 - 10,000'
+                },
+                {
+                    id:3,
+                    value:'10,000 - 15,000'
+                },
+                {
+                    id:4,
+                    value:'15,000 - 20,000'
+                },
+                {
+                    id:5,
+                    value:'20,000 - 25,000'
+                },
+                {
+                    id:6,
+                    value:'above 25,000'
+                },
+            ],
+            time_jobs: [
+                {
+                    id:1,
+                    value:'Less than a month'
+                },
+                {
+                    id:2,
+                    value:'1 - 6 months'
+                },
+                {
+                    id:3,
+                    value:'7 - 11 months'
+                },
+                {
+                    id:4,
+                    value:'1 - 2 years'
+                },
+                {
+                    id:5,
+                    value:'2 - 3 years'
+                },
+                {
+                    id:6,
+                    value:'3 - 4 years'
+                },
+            ],
+            booleanOptions:[
+                {
+                    id:0,
+                    name:'No'
+                },
+                {
+                    id:1,
+                    name:'Yes'
+                }
+            ],
       date: null,
       menu: false,
       issuccess: false,

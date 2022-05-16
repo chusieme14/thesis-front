@@ -67,68 +67,7 @@
   export default {
       data(){
         return{
-            incomes: [
-                {
-                    id:1,
-                    value:'below 5,000'
-                },
-                {
-                    id:2,
-                    value:'5,000 - 10,000'
-                },
-                {
-                    id:3,
-                    value:'10,000 - 15,000'
-                },
-                {
-                    id:4,
-                    value:'15,000 - 20,000'
-                },
-                {
-                    id:5,
-                    value:'20,000 - 25,000'
-                },
-                {
-                    id:6,
-                    value:'above 25,000'
-                },
-            ],
-            time_jobs: [
-                {
-                    id:1,
-                    value:'Less than a month'
-                },
-                {
-                    id:2,
-                    value:'1 - 6 months'
-                },
-                {
-                    id:3,
-                    value:'7 - 11 months'
-                },
-                {
-                    id:4,
-                    value:'1 - 2 years'
-                },
-                {
-                    id:5,
-                    value:'2 - 3 years'
-                },
-                {
-                    id:6,
-                    value:'3 - 4 years'
-                },
-            ],
-            booleanOptions:[
-                {
-                    id:0,
-                    name:'No'
-                },
-                {
-                    id:1,
-                    name:'Yes'
-                }
-            ],
+            
             courses: [],
             payload:{
                 detail:{}

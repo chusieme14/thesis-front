@@ -6,7 +6,7 @@
                 <li :class="tabs==1?'active':''"><v-btn @click="tabs=1">personal information</v-btn></li>
                 <li :class="tabs==2?'active':''"><v-btn @click="tabs=2">Educational Informations</v-btn></li>
                 <li :class="tabs==3?'active':''"><v-btn @click="tabs=3">Employment Informations</v-btn></li>
-                <li :class="tabs==4?'active':''"><v-btn @click="tabs=4">Survey Informations</v-btn></li>
+                <!-- <li :class="tabs==4?'active':''"><v-btn @click="tabs=4">Survey Informations</v-btn></li> -->
             </ul>
         </div>
         <div class="infos">
@@ -14,7 +14,7 @@
             <personal-info v-if="tabs==1"></personal-info>
             <educational-info v-if="tabs==2"></educational-info>
             <employment-info v-if="tabs==3"></employment-info>
-            <survey-info v-if="tabs==4"></survey-info>
+            <!-- <survey-info v-if="tabs==4"></survey-info> -->
            
         </div>
     </div>
