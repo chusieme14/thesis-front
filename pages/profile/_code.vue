@@ -34,7 +34,13 @@ export default {
     data(){
         return{
             tabs:0,
+            appUrl:process.env.appUrl,
         }
+    },
+    methods:{
+        copy(){
+            navigator.clipboard.writeText(this.appUrl+'/profile/'+this.$auth.user.share_code)
+        },
     },
     created(){
         console.log(this.$route.params.id,"params")
