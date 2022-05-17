@@ -80,7 +80,7 @@
     </v-card-text>
     <v-card-actions>
       <v-spacer></v-spacer>
-      <v-btn @click="copy" color="success">Copy shared link</v-btn>
+      <!-- <v-btn @click="copy" color="success">Copy shared link</v-btn> -->
       <v-btn @click="update" color="success">Save</v-btn>
     </v-card-actions>
     <v-snackbar

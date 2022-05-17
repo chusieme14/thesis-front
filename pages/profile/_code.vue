@@ -7,6 +7,12 @@
                 <li :class="tabs==2?'active':''"><v-btn @click="tabs=2">Educational Informations</v-btn></li>
                 <li :class="tabs==3?'active':''"><v-btn @click="tabs=3">Employment Informations</v-btn></li>
                 <!-- <li :class="tabs==4?'active':''"><v-btn @click="tabs=4">Survey Informations</v-btn></li> -->
+                <div class="class-share">
+                    <div>
+                        <small>Share your link to another to gain points</small>
+                        <v-btn @click="copy" color="success">Copy share link</v-btn>
+                    </div>
+                </div>
             </ul>
         </div>
         <div class="infos">
@@ -35,9 +41,22 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style lang='scss' scoped>
+    .class-share{
+        display: flex;
+        justify-content: center;
+
+        div{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+    }
     .active{
-        background-color: rgb(192, 189, 189);
+        background-color: #006048;
+        button{
+            color: white;
+        }
     }
     .profile {
         margin-right: 28px;
