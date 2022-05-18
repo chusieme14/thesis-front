@@ -13,12 +13,14 @@
                             dense
                         ></v-text-field>
                         <v-text-field
+                            :append-icon="show3 ? 'mdi-eye' : 'mdi-eye-off'"
                             label="Password"
                             :rules="[() => !!payload.password ||  '']"
                             v-model="payload.password"
                             filled
-                            type="password"
+                            :type="show3 ? 'text' : 'password'"
                             dense
+                            @click:append="show3 = !show3"
                         ></v-text-field>
                     </v-form>
                 </v-card-text>
@@ -62,7 +64,8 @@ export default {
     data(){
         return{
             payload:{},
-            hasError:false
+            hasError:false,
+            show3: false,
         }
     },
     methods:{
@@ -106,6 +109,7 @@ export default {
     .login {
         display: flex;
         justify-content: center;
+        
     }
 
     .login-inner {
