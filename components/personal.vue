@@ -188,7 +188,10 @@ export default {
             ],
             genders:[
                 'Male',
-                'Famale'
+                'Famale',
+                'Transgender',
+                'Non-binary',
+                'Prefer not to respond',
             ],
         }
     },
