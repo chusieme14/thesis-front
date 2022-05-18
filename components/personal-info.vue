@@ -107,7 +107,13 @@
     data: () => ({
       appUrl:process.env.appUrl,
       civil_status: ['Single', 'Married', 'Separated', 'Widowed'],
-      gender: ['Male', 'Female'],
+      gender: [
+        'Male',
+        'Famale',
+        'Transgender',
+        'Non-binary',
+        'Prefer not to respond',
+      ],
       incomes: [
                 {
                     id:1,
